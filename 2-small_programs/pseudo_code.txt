@@ -1,0 +1,91 @@
+For example, write out pseudo-code (both casual and formal) that does the following:
+
+
+1) a method that returns the sum of two integers:
+CASUAL:
+  Define a method that requires two parameters
+  
+  In the method:
+    Write a result variable setting it to be the first parameter + second parameter
+    Return the result
+  End the method
+
+FORMAL:
+  START
+
+  Define a method that requires two parameters
+
+  In the method:
+    SET result = first_param + second_param
+    RETURN result
+  END
+
+
+
+
+2) a method that takes an array of strings, and returns a string that is all those strings concatenated together
+CASUAL:
+  Define a method that takes in only one parameter that takes in an array as argument
+
+  In the method:
+    Iterate through the each array element
+      - Save the first array element into a string variable
+      - Join the next array element into the string variable
+      - Stop when at the last array element
+
+    After iterating through the array, return the string variable
+
+  End the method
+
+FORMAL:
+START
+  
+  Define a method that takes in only one parameter that takes in an array as argument
+
+  In the method:
+
+    WHILE the array's index < the size of the array
+      SET string_var = array element at current index + current string_var
+      next iteration
+
+    END LOOP
+    After the loop, return string_var
+
+END
+
+
+
+
+3) a method that takes an array of integers, and returns a new array with every other element
+CASUAL:
+
+Define a method that requires only an argument to pass in a array
+
+In the method:
+
+  Iterate through each array's element
+    - If the index is an even number (0,2,4)
+    - Map the element into a new array
+  After the iteration, return the new array
+
+End the method
+
+FORMAL:
+
+START
+Define a method that takes in an array as argument
+
+In the method:
+
+  WHILE the index number of array < size of array
+
+    IF index number is even
+      - map that element into a new array
+    next iteration
+
+  END loop
+  RETURN new array
+
+END
+
+  
