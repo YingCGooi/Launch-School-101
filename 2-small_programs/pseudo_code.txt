@@ -80,7 +80,7 @@ In the method:
   WHILE the index number of array < size of array
 
     IF index number is even
-      - map that element into a new array
+      - new array << element at current index
     next iteration
 
   END loop
