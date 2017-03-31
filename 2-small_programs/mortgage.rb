@@ -19,11 +19,11 @@ MSG = YAML.load_file('mortgage_msg.yml')
 # Using the PV annuity formula,
 # we calculate and output the monthly payment (m) to the user
 
-def prompt(msg) # using a shorthand parser here
+def prompt(msg) # using a shorthand parser notation here
   puts("=> #{MSG[LANG][msg]}")
 end
 
-def output(msg)
+def output(msg) # another output style excluding the newline
   print("  => #{MSG[LANG][msg]}")
 end
 
@@ -51,7 +51,7 @@ loop do
 
   loop do # prompt user input for the loan amount
     prompt("LOAN_INPUT")
-    p = Kernel.gets().chomp()
+    p = gets.chomp
 
     if valid_number?(p)
       p = p.to_f
