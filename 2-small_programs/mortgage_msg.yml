@@ -13,3 +13,17 @@ en:
   OUTPUT: "We have calculated your payment amount to be: "
   REPEAT?: "Would you like to perform another mortgage calculation? (Y to calculate again)"
   THANK_YOU: "Thank you for using the mortage calculator!"
+
+my:
+  WELCOME: "Selamat datang ke kalkulator gadai janji \n => Sebelum kita bermula, kita perlu beberapa keping maklumat daripada anda ..."
+  LOAN_INPUT: "Sila masukkan jumlah pinjaman anda ($):"
+  VALID_NUM: "Hmm ... tidak nampak betul. Sila masukkan nombor yang sah.."
+  APR_INPUT:  "Sila masukkan Kadar Tahunan Peratus (APR) dalam peratus (%):"
+  YEAR_INPUT: "Sila masukkan tempoh pinjaman (dalam tahun):"
+  GIVEN_INPUT: "Memandangkan maklumat anda ..."
+  P: "Jumlah Pinjaman: "
+  I: "Kadar tahunan peratus: "
+  YR: "Tempoh Pinjaman: "
+  OUTPUT: "Kami telah dikira jumlah pembayaran anda untuk menjadi:"
+  REPEAT?: "Adakah anda ingin melaksanakan satu lagi kiraan gadai janji? (Y untuk mengira semula)"
+  THANK_YOU: "Terima kasih untuk menggunakan kalkulator gadai!"
