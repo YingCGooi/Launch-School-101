@@ -33,7 +33,7 @@ def stringy(integer, default=1)
     end
     binaries.join
   else
-    nil
+    nil # return nil if the input is not valid
   end
 end
 
@@ -42,5 +42,4 @@ puts stringy(9) == '101010101'
 puts stringy(4) == '1010'
 puts stringy(7) == '1010101'
 
-puts stringy(6, 1)
 puts stringy(6, 0)

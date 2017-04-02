@@ -2,7 +2,7 @@
 
 # input criteria: 
 # A string containing one or more words
-
+# 
 # output criteria:
 # if the string has >= 5 letters, reverse the word
 # separate each word with spaces
