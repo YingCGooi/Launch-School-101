@@ -28,8 +28,7 @@ end
 def display_results(player, computer, player_score, computer_score)
   prompt("#{player.upcase} wins #{computer.upcase}") if win?(player, computer)
   prompt("#{computer.upcase} wins #{player.upcase}") if win?(computer, player)
-  prompt("Your score: #{player_score}")
-  prompt("Computer's score: #{computer_score}")
+  prompt("Your score: #{player_score} | Computer's score: #{computer_score}")
   prompt('You have won the game!') if player_score >= 5
   prompt('You have lost the game!') if computer_score >= 5
 end
@@ -58,18 +57,20 @@ loop do
 
   player_score += 1 if win?(player_choice, computer_choice)
   computer_score += 1 if win?(computer_choice, player_choice)
-  
+
   display_results(player_choice, computer_choice, player_score, computer_score)
 
   Kernel.puts("\n---------------------------------------------------")
   next unless computer_score >= 5 || player_score >= 5
+
   prompt("Do you want to play again? (Hit Enter to play again)")
   answer = Kernel.gets()
   if answer == "\n" || answer.downcase().start_with?('y')
     player_score = 0
     computer_score = 0
+  else
+    break
   end
-  break unless answer.downcase().start_with?('y') || answer == "\n"
 end
 
 prompt("Thank you for playing. Good bye!")
