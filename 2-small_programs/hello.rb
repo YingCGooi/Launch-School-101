@@ -1,14 +1,7 @@
-def fix(value)
-  puts "initial object #{value.object_id}"
-  value << 'xyz'
-  value = value.upcase
-  puts "upcased object #{value.object_id}"
-  value.concat('!')
-  puts "concatinated object #{value.object_id}"
-  value
+def print_id number
+  puts "In method object id = #{number.object_id}"
 end
 
-s = 'hello'
-puts "original object #{s} #{s.object_id}"
-t = fix(s)
-puts "final object #{t} #{t.object_id}"
+value = 33
+puts "Outside method object id = #{value.object_id}"
+print_id value

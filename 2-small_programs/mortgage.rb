@@ -90,7 +90,7 @@ loop do
 
   prompt("REPEAT?")
   answer = gets.chomp
-  puts("\n-------------------------------------\n")
+  system 'clear'
   break unless %w(y yes yup ya yep).include?(answer.downcase)
 
 end
