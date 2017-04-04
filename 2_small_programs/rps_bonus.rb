@@ -1,5 +1,4 @@
 # Bonus features for RPS game
-require 'pry'
 
 VALID_CHOICES = {
   "r" => "rock",
@@ -9,7 +8,12 @@ VALID_CHOICES = {
   "k" => "spock"
 }
 
-def display_hash(hash)
+def clear
+  system "clear"
+  system "cls"
+end
+
+def display_choices(hash)
   hash.each { |key, value| Kernel.puts("  => #{key} for #{value.upcase}") }
 end
 
@@ -18,16 +22,21 @@ def prompt(message)
 end
 
 def win?(first, second)
-  (first == 'rock' && (second == 'lizard' || second == 'scissors')) ||
-    (first == 'paper' && (second == 'rock' || second == 'spock')) ||
-    (first == 'scissors' && (second == 'paper' || second == 'lizard')) ||
-    (first == 'lizard' && (second == 'spock' || second == 'paper')) ||
-    (first == 'spock' && (second == 'rock' || second == 'scissors'))
+  win_hash = {
+    'rock'      => %w(lizard scissors),
+    'paper'     => %w(rock spock),
+    'scissors'  => %w(paper lizard),
+    'lizard'    => %w(spock paper),
+    'spock'     => %w(rock scissors)
+  }
+
+  win_hash[first].include?(second)
 end
 
 def display_results(player, computer, player_score, computer_score)
   prompt("#{player.upcase} wins #{computer.upcase}") if win?(player, computer)
   prompt("#{computer.upcase} wins #{player.upcase}") if win?(computer, player)
+  prompt("It is a tie!") if player == computer
   prompt("Your score: #{player_score} | Computer's score: #{computer_score}")
   prompt('You have won the game!') if player_score >= 5
   prompt('You have lost the game!') if computer_score >= 5
@@ -37,12 +46,12 @@ player_score = 0
 computer_score = 0
 choice = ''
 player_choice = ''
-system 'clear'
 
 loop do
+  clear
   loop do
     prompt("Choose a letter: ")
-    display_hash(VALID_CHOICES)
+    display_choices(VALID_CHOICES)
     choice = Kernel.gets().chomp()
 
     break if VALID_CHOICES.key?(choice.downcase)
@@ -61,11 +70,16 @@ loop do
   display_results(player_choice, computer_choice, player_score, computer_score)
 
   Kernel.puts("\n---------------------------------------------------")
+  loop do
+    prompt("Hit enter to continue")
+    answer = Kernel.gets()
+    break if answer == "\n"
+  end
   next unless computer_score >= 5 || player_score >= 5
 
   prompt("Do you want to play again? (Hit Enter to play again)")
   answer = Kernel.gets()
-  if answer == "\n" || answer.downcase().start_with?('y')
+  if answer == "\n" || %w(y yes yup ya yep).include?(answer.chars.first)
     player_score = 0
     computer_score = 0
   else
