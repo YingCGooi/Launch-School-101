@@ -5,4 +5,4 @@ end
 greeting = "hi"
 greeting = extend_greeting(greeting)
 
-puts greeting
+puts !greeting

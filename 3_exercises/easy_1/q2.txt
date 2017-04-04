@@ -1,0 +1,6 @@
+1. != is "not equals to" and should be use in conditional tests
+2. ! before a variable will return false
+3. ! after something usually means you are mutating the original variable
+4. ? before or after a method is just a name
+5. Some core methods have ? (such as include?())
+6. !! before some object will return true except nil and false
