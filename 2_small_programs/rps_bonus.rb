@@ -8,7 +8,7 @@ VALID_CHOICES = {
   "k" => "spock"
 }
 
-def clear
+def clear_screen
   system "clear"
   system "cls"
 end
@@ -48,7 +48,7 @@ choice = ''
 player_choice = ''
 
 loop do
-  clear
+  clear_screen
   loop do
     prompt("Choose a letter: ")
     display_choices(VALID_CHOICES)
@@ -79,7 +79,7 @@ loop do
 
   prompt("Do you want to play again? (Hit Enter to play again)")
   answer = Kernel.gets()
-  if answer == "\n" || %w(y yes yup ya yep).include?(answer.chars.first)
+  if answer == "\n" || %w(y yes yup ya yep).include?(answer)
     player_score = 0
     computer_score = 0
   else
