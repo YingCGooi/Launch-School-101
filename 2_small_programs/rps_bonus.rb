@@ -9,7 +9,7 @@ VALID_CHOICES = {
 }
 
 def clear_screen
-  system "clear" || system("cls")
+  system("clear") || system("cls")
 end
 
 def display_choices(hash)
@@ -82,11 +82,12 @@ loop do
   next unless computer_score >= 5 || player_score >= 5
 
   loop do
-    prompt("Do you want to play again? (Hit Enter or 'y' to play again, 'x' to exit)")
+    prompt("Play again? Hit Enter or 'y' to play again, 'x' to exit.")
     answer = Kernel.gets()
     break if valid_exit_input?(answer)
     prompt("Invalid input!")
   end
+
   player_score = 0
   computer_score = 0
   break if answer.chomp.downcase == 'x'
