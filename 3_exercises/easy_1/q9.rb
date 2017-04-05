@@ -1,0 +1,16 @@
+# Given the hash below
+
+flintstones = { "Fred" => 0, "Wilma" => 1, "Barney" => 2, "Betty" => 3, "BamBam" => 4, "Pebbles" => 5 }
+
+# Turn this into an array containing only two elements: Barney's name and Barney's number
+array = []
+
+flintstones.each do |key, value|
+  array << key << value if key == "Barney"
+end
+
+p array
+
+# original solution
+flintstones.assoc("Barney")
+#=> ["Barney", 2]
