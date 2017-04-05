@@ -9,8 +9,7 @@ VALID_CHOICES = {
 }
 
 def clear_screen
-  system "clear"
-  system "cls"
+  system "clear" || system("cls")
 end
 
 def display_choices(hash)
@@ -42,10 +41,15 @@ def display_results(player, computer, player_score, computer_score)
   prompt('You have lost the game!') if computer_score >= 5
 end
 
+def valid_exit_input?(answer)
+  answer == "\n" || %w(X x y yes yup ya yep).include?(answer.chomp)
+end
+
 player_score = 0
 computer_score = 0
 choice = ''
 player_choice = ''
+answer = ''
 
 loop do
   clear_screen
@@ -77,14 +81,15 @@ loop do
   end
   next unless computer_score >= 5 || player_score >= 5
 
-  prompt("Do you want to play again? (Hit Enter to play again)")
-  answer = Kernel.gets()
-  if answer == "\n" || %w(y yes yup ya yep).include?(answer)
-    player_score = 0
-    computer_score = 0
-  else
-    break
+  loop do
+    prompt("Do you want to play again? (Hit Enter or 'y' to play again, 'x' to exit)")
+    answer = Kernel.gets()
+    break if valid_exit_input?(answer)
+    prompt("Invalid input!")
   end
+  player_score = 0
+  computer_score = 0
+  break if answer.chomp.downcase == 'x'
 end
 
 prompt("Thank you for playing. Good bye!")
