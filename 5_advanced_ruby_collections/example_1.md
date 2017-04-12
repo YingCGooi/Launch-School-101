@@ -7,7 +7,7 @@ end
 # => [[1, 2], [3, 4]]
 ```
 
-### Analysis
+## Analysis
 
 #### LINE 1
 The nested array `[[1, 2], [3, 4]]` which contains two array elements `[1, 2]`and `[3, 4]` is performing an action call - `Array#each`.
