@@ -8,9 +8,9 @@ end
 # => [1, 3]
 ```
 
-| Line| Action              | Object                 |Side Effect / Output| Return Value  | Return Value Usage |
+| Line| Action              | Object                 |Side Effect / Output| Return Value  | Return Value's Usage |
 |:---:| :-----------------  | :----------            |:---       | :------------ | :------------ |
-|  1  | `Array#map` method call | `[[1, 2], [3, 4]]` | Shown on last line of snippet   | New array `[1, 3]`| No |  |
-|  2  | `first` method call | Each sub-array         | No        | First element (at index 0) of sub-array | Used by `puts` |
-|  2  | `puts` method call  | First element of each sub-array | Output string representation of the object (5th and 6th lines) | `nil` | No |  |
-|  3  | `first` method call | Each sub-array         | No        | First element of sub-array | Block's return value |
+|  1  | `Array#map` method call | `[[1, 2], [3, 4]]` | - | New array `[1, 3]`| - |
+|  2  | `first` method call | Each sub-array         | -        | First element (at index 0) of sub-array | Used by `puts` |
+|  2  | `puts` method call  | First element of each sub-array | Output string representation of the object (shown on 5th and 6th lines) | `nil` | - |
+|  3  | `first` method call | Each sub-array         | -        | First element of sub-array | Block's return value |
