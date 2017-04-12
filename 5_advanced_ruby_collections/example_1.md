@@ -7,7 +7,7 @@ end
 # => [[1, 2], [3, 4]]
 ```
 
-## Analysis
+### Analysis
 
 #### LINE 1
 The nested array `[[1, 2], [3, 4]]` which contains two array elements `[1, 2]`and `[3, 4]` is performing an action call - `Array#each`.
@@ -24,7 +24,7 @@ At line 2, we call the method `Array#first` on the variable `arr`. The variable 
 
 At the first iteration of the block execution, `arr.first`  can be thought as executing `[1, 2].first`. The operation will return the first element (at index 0) in the sub-array, in this case `1`.
 
-Then, the `puts` method now outputs the result of `arr.first`, which is `1`. Since `puts` will always return a `nil` value after it is called, the block return value will always be `nil`.
+Then, the `puts` method now outputs the string representation of `arr.first`, which is `1`. Since `puts` will always return a `nil` value after it is called, the block return value will always be `nil`.
 
 The same block execution is performed for the second iteration.
 At the second iteration however, `puts arr.first` will output `3`. This is because `3` is returned by `arr.first` which can be thought as peforming `[3, 4].first`.
