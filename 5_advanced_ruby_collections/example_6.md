@@ -47,5 +47,5 @@ The `{c: 'cat'}` element will be selected and included in the new array collecti
 `Enumerable#any?` will return `true` if one or more of its block iterations returns a value of `true`,
 thus ignoring any block return values of `false` or `nil`.
 In this case, if `#any` is used instead of `#all?`, the first hash-element `{ a: 'ant', b: 'elephant' }` will return a value of `true` when called upon by `#any?`.
-This is because while `{b: 'elephant'}` will result in a block return value of `false`, it is ignored as the first key-value pair `{a: 'ant'}` will result in `true`.
+This is because while `{b: 'elephant'}` will result in a block return value of `false`, it is ignored as the first key-value pair `{a: 'ant'}` will result in a block return value of `true`.
 Finally, `#select` will include both hash-elements into a new array since `#any?` returns `true` for both hash-elements.
