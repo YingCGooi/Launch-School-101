@@ -10,10 +10,11 @@ end
 
 |**Line**| **Action** | **Object** |**Side Effect / Console Output**| **Return Value**  | **Return Value's Usage** |
 |:---:| :-----------------  | :----------            |:---   | :------------ | :------------ |
-|  1  | `Array#map` method call | `[[1, 2], [3, 4]]` | No | New array `[1, 3]`| No usage |
-|  2  | `first` method call | Each sub-array (`[1, 2]`and`[3, 4]`) | No   | Integer at index 0 of sub-array | Used by `puts` |
+|  1  | `Array#map` method call | `[[1, 2], [3, 4]]` | None | New array `[1, 3]`| No usage |
+|  2  | `first` method call | Each sub-array (`[1, 2]`and`[3, 4]`) | None   | Integer at index 0 of sub-array | Used by `puts` |
 |  2  | `puts` method call  | First element of each sub-array | Output string representation of the integer (shown on 5th and 6th lines) | `nil` | No usage |
-|  3  | `first` method call | Each sub-array (`[1, 2]`and`[3, 4]`) | No   | First element of sub-array | As block's return value for `map`'s transformation |
+|  3  | `first` method call | Each sub-array (`[1, 2]`and`[3, 4]`) | None  | Integer at index 0 of sub-array | As block's return value |
+| 1-4 | Block Execution | Each sub-array | None | Integers `1` and `3` returned from the method call `first` | Used by `Array#map` for transformation |
 
 ## Detailed Breakdown
 
