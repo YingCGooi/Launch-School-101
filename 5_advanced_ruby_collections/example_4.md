@@ -22,15 +22,15 @@ end
 | 6        | End of inner block execution          | None                                                                    | None                                                           | None                                                                                       | None                                                 |
 | 7        | End of outer block execution          | None                                                                    | None                                                           | None                                                                                       | None                                                 |
 
-#### Output
+### Output
 Each sub-array (`[18,7]` and `[3,12]` respectively) is passed into the inner `each` block.
 In the inner block, each element in each sub-array at that iteration is evaluated through the `if` statement.
-When the element is an integer greater than 5, the `if` statement evaluates to true and that integer is output to the console through calling `puts`.
-The integers that are output to the console as string representations are `18`, `7` and `12`.
+When the element is an integer greater than 5, the `if` statement evaluates to true and that integer is output to the console by calling `puts`.
+Thus, integers that are output to the console as string representations are `18`, `7` and `12`.
 
-#### Value of `my_arr`
-`Array#each` will always ignore the block's return value and return the original object called upon.
-In this case, the value of my_arr will be the original calling object, which is the array `[[18, 7], [3, 12]]`.
+### Value of `my_arr`
+`Array#each` ignores the block's return value and return the original object called upon.
+In this case, the value of `my_arr` will be the original calling object, which is the array `[[18, 7], [3, 12]]`.
 
 
 
