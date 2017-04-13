@@ -43,4 +43,9 @@ The `#select` block will now have block return values (evaluated from `#all?` me
 `#select` method will only select all the elements whose block return value evaluates to `true`, and in this case, the `{c: 'cat'}` hash-element.
 The `{c: 'cat'}` element will be selected and included in the new array collection.
 
-
+### What if we use `#any?` instead?
+`Enumerable#any?` will return `true` if one or more of its block iterations returns a value of `true`,
+thus ignoring any block return values of `false` or `nil`.
+In this case, if `#any` is used instead of `#all?`, the first hash-element `{ a: 'ant', b: 'elephant' }` will return a value of `true` when called upon by `#any?`.
+This is because while `{b: 'elephant'}` will result in a block return value of `false`, it is ignored as the first key-value pair `{a: 'ant'}` will result in `true`.
+Finally, `#select` will include both hash-elements into a new array since `#any?` returns `true` for both hash-elements.
