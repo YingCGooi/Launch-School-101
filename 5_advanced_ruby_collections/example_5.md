@@ -17,7 +17,7 @@ end
 
 
 ### Return Values and Analysis
----------------------------------
+______________________________
 When the original array `[[1, 2], [3, 4]]` is passed into the outer `#map` block, at each iteration each sub-array is passed into the inner `#map` block.
 Each element in the sub-array at the current outer block iteration is then passed into the inner block through the block argument `|num|`,
 and subsequently assinged to inner local variable `num`.
