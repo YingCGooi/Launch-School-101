@@ -33,7 +33,7 @@ end
 ```
 
 The above example above shows that:
-- the inner `#select` method will return new sub-arrays containing the selected elements based on our criteria
+- the inner `#select` method will return new sub-arrays containing selected elements
 - The new sub-arrays will become the block return values of the outer `#select`
 - `#select` treats a truthy object to be `true`, therefore including the entire sub-array into the new collection
 
