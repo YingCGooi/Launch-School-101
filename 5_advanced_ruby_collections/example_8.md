@@ -1,6 +1,6 @@
 ## Selecting Different Objects in Nested Arrays
 
-Lets's say that we are selecting integers that are greater than 13, but strings that are less than 6 characters, we can use the following implementation to achieve this.
+Lets's say that we are selecting integers that are greater than 13 or strings that are less than 6 characters, we can use the following implementation to achieve this:
 
 ```ruby
 [[8, 13, 27], ['apple', 'banana', 'cantaloupe']].map do |arr|
@@ -15,8 +15,9 @@ end
 # => [[27], ["apple"]]
 ```
 
+
 ### Why `#map` instead of `#select` or `#each`?
-**`#select` here won't work since an outer `#select` will not have access to the inner elements of the nested array.**
+`#select` here won't work since an outer `#select` will not have access to the inner elements of the nested array.
 
 ```ruby
 [[8, 13, 27], ['apple', 'banana', 'cantaloupe']].select do |arr|
@@ -32,7 +33,7 @@ end
 ```
 
 The above example above shows that:
-- the inner `#select` method will return new sub-arrays
+- the inner `#select` method will return new sub-arrays containing the selected elements based on our criteria
 - The new sub-arrays will become the block return values of the outer `#select`
 - `#select` treats a truthy object to be `true`, therefore including the entire sub-array into the new collection
 
