@@ -8,7 +8,7 @@ end
 # => [1, 3]
 ```
 
-| Line| Action | Object   |Side Effect / Console Output| Return Value  | Return Value's Usage |
+***|Line| Action | Object   |Side Effect / Console Output| Return Value  | Return Value's Usage |***
 |:---:| :-----------------  | :----------            |:---   | :------------ | :------------ |
 |  1  | `Array#map` method call | `[[1, 2], [3, 4]]` | No | New array `[1, 3]`| No usage |
 |  2  | `first` method call | Each sub-array         | No   | First element (at index 0) of sub-array | Used by `puts` |
@@ -30,4 +30,4 @@ We then invoke `puts` on the return value of `arr.first`. Through each block ite
 We then re-invoke `first` on the local variable `arr` at the last line of the block execution. Based on the previous evaluation of `arr.first` on line 2, we can expect the same values to be returned, which are `1` and `3` respectively. Since `arr.first` is the last evaluated statement within the block, `arr.first`'s return value will be the block's return value.
 
 #### LINES 1 & 4
-`end` designates the previous line as the last evaluated statement. Since the last evaluated statement of `arr.first`returns block return values of `1` and `3`, this two integers are then included to a new array object through the transformation feature of `Array#map`. Thus, the return value of the `Array#map` method in this case is `[1, 3]`.
+`end` designates the previous line as the last evaluated statement. Since the last evaluated statement `arr.first`returns block return values of `1` and `3`, these two integers are included in a new array object by the transformation feature of `Array#map`. Thus, the return value of the `Array#map` method in this case is `[1, 3]`.
