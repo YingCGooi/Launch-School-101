@@ -10,6 +10,7 @@ end
 
 
 | **Line** | **Action**                            | **Object**                                            | **Side Effect / Console Output**                          | **Return Value(s)**                                                | **Return Value's Usage**                  |
+| :---:    | :---------                            | :---------                                            | :-------------------------------                          | :------------------                                                | :-----------------------                  |
 | 1        | Assignment to outer variable `my_arr` | Original array from `#each`: `[[18, 7], [3, 12]]`     | None                                                      | None                                                               | None                                      |
 | 1        | `Array#each` method call              | Array `[[18, 7], [3, 12]]`                            | `Array#each` will return original collection              | Original Array                                                     | Assigned to outer local variable `my_arr` |
 | 1-7      | Block Execution                       | Each sub-array `[18,7]`/`[3,12]`                      | None                                                      | Sub-arrays `[18,7]` and `[3,12]` respectively                      | No usage                                  |
