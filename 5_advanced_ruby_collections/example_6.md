@@ -30,16 +30,16 @@ The key is assigned to the local variable `key`, while the value of the pair is 
 Next, in the last statement of `#all?` block execution,
 we specify a boolean operation such that it will return `true` if `value[0]` (the first letter of the value) matches `key.to_s` (the string representation of key symbol).
 
-Passing in the first hash-element, the key-value pairs `a: 'ant'` will evaluate the last statement to `true` and `b: 'elephant'` will evaluate to `false`.
-The last evaluated statement's value of `#all?` determines the `#all?` block's return value.
-Since not all of the key-value pairs from the first hash-element evaluates the last statement to true, the `#all?` method will return a value of `false`.
-And since `#all?` method is the last evaluated statement of `#select`, this will be `#select`'s block return value.
+Passing in the first hash-element, the key-value pairs `a: 'ant'` will evaluate the last statement of `#all?` block to `true` and `b: 'elephant'` will evaluate to `false`.
+The last evaluated statement's value determines the block's return value.
+`#all?` will return `true` only if the block passed to it never returns a value other than `true` for every key-value pair in the hash-element.
+Since the second key-value pair in the hash-element returns a block value of `false`, the `#all?` method will return a value of `false`.
 
 Passing in the second hash-element `{c: 'cat'}`, when this key-value pair is evaluated by the last statement of `#all?`, it returns a block value of `true`.
 And since there are no other key-value pairs to be evaluated by the `#all?` block, no other block return values will be returned.
 `#all?` method will then return a value of `true`, based on its only `true` block return value.
 
-The `#select` block will now have block return values of `false` at the first iteration and `true` at the second.
+The `#select` block will now have block return values (evaluated from `#all?` method) of `false` at the first iteration and `true` at the second.
 `#select` method will only select all the elements whose block return value evaluates to `true`, and in this case, the `{c: 'cat'}` hash-element.
 The `{c: 'cat'}` element will be selected and included in the new array collection.
 
