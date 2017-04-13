@@ -25,8 +25,14 @@ end
 ### Output
 Each sub-array (`[18,7]` and `[3,12]` respectively) is passed into the inner `each` block.
 In the inner block, each element in each sub-array at that iteration is evaluated through the `if` statement.
-When the element is an integer greater than 5, the `if` statement evaluates to true and that integer is output to the console by calling `puts`.
-Thus, integers that are output to the console as string representations are `18`, `7` and `12`.
+When the element is an integer greater than 5, the `if` statement evaluates to true and that integer is output as a string representation to the console by calling `puts`.
+
+```ruby
+# => 18
+# => 7
+# => 12
+# => [[18, 7], [3, 12]]
+```
 
 ### Value of `my_arr`
 `Array#each` ignores the block's return value and return the original object called upon.
