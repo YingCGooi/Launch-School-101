@@ -24,7 +24,7 @@ At the last evaluated statement of the inner block, `num * 2` will return an int
 This return value is the inner block's return value at the current inner block's iteration.
 
 At the end of the inner block's execution, a new array will be returned by the inner `#map` containing all of the transformed elements in the sub-array at the current outer block's iteration.
-In this case, the inner `#map` will return `[2, 4]` at the first outer block iteration and `[6, 8]` at the second iteration.
+In other words, the inner `#map` will return `[2, 4]` at the first outer block iteration and `[6, 8]` at the second iteration.
 Since the inner block is the last evaluated statement of the outer block,
 the return values of the inner `#map`: `[2, 4]` and `[6, 8]` will be used as the outer block's return values.
 The outer `#map` will use those return values and perform a transformation, returning a new array `[[2, 4], [6, 8]]`.
