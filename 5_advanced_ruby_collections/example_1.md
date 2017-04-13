@@ -10,13 +10,13 @@ end
 ## Analysis
 
 #### LINE 1
-The nested array `[[1, 2], [3, 4]]` which contains two array elements `[1, 2]`and `[3, 4]` is performing an action call - `Array#each`.
-The return value of `Array#each` is the original collection - which is the nested array `[[1, 2], [3, 4]]`.
+The array `[[1, 2], [3, 4]]` which contains two nested array elements `[1, 2]`and `[3, 4]` is performing an action call - `Array#each`.
+The return value of `Array#each` is the original collection - which is the array `[[1, 2], [3, 4]]`.
 `Array#each` ignores the block's return value.
 
 #### LINE 1-3
 After `Array#each` was called, we specify a block argument `arr` in line 1.
-Each element in the original collection (in this case each sub-array sub-array of the nested array: `[1, 2]` and `[3, 4]`.) is passed into the block through the block argument `arr`. The local variable `arr` is now made available.
+Each element in the original collection (in this case each sub-array of the array: `[1, 2]` and `[3, 4]`.) is passed into the block through the block argument `arr`. The local variable `arr` is now made available.
 `[1, 2]` will be passed in at the first iteration of the block execution, while `[3, 4]` will be passed in at the second iteration.
 
 #### LINE 2
