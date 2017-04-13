@@ -19,9 +19,9 @@ end
 ### Return Values and Analysis
 When the original array `[[1, 2], [3, 4]]` is passed into the outer `#map` block, at each iteration each sub-array is passed into the inner `#map` block.
 Each element in the sub-array at the current outer block iteration is then passed into the inner block through the block argument `|num|`,
-and subsequently assinged to inner local variable `num`.
+and subsequently assigned to inner local variable `num`.
 At the last evaluated statement of the inner block, `num * 2` will return an integer value that is twice the integer value of the original element.
-This return value is the inner block's return value.
+This return value is the inner block's return value at the current inner block's iteration.
 
 At the end of block execution, a new array will be returned by the inner `#map` containing all of the transformed elements in the sub-array for that outer block's iteration.
 In this case, the inner `#map` will return `[2, 4]` in the first outer block iteration and `[6, 8]` in the second iteration.
