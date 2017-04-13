@@ -1,5 +1,5 @@
-## Selecting Elements
-##### Where every key matches the first letter of the value
+### Selecting Elements
+###### Where every key matches the first letter of the value
 
 ```ruby
 [{ a: 'ant', b: 'elephant' }, { c: 'cat' }].select do |hash|
