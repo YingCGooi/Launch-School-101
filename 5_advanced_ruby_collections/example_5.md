@@ -26,7 +26,7 @@ This return value is the inner block's return value at the current inner block's
 At the end of the inner block's execution, a new array will be returned by the inner `#map` containing all of the transformed elements in the sub-array at the current outer block's iteration.
 In other words, the inner `#map` will return `[2, 4]` at the first outer block iteration and `[6, 8]` at the second iteration.
 Since the inner block is the last evaluated statement of the outer block,
-the return values of the inner `#map`: `[2, 4]` and `[6, 8]` will be used as the outer block's return values.
+the return values of the inner `#map` are `[2, 4]`, `[6, 8]` respectively and will be used to determine the outer block's return values.
 The outer `#map` will use those return values and perform a transformation, returning a new array `[[2, 4], [6, 8]]`.
 
 
