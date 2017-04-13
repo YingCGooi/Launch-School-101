@@ -1,5 +1,5 @@
 ## Selecting Elements in an Array of Hashes
-> ###### In here, we selecte every element where every key matches the first letter of the value
+> ###### In here, we select every element where every key matches the first letter of the value
 
 ```ruby
 [{ a: 'ant', b: 'elephant' }, { c: 'cat' }].select do |hash|
