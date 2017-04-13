@@ -1,4 +1,4 @@
-### Selecting Elements in an Array of Hashes
+## Selecting Elements in an Array of Hashes
 > ###### In here, we selecte every element where every key matches the first letter of the value
 
 ```ruby
