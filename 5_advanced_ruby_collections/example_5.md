@@ -8,7 +8,7 @@ end
 
 | **Line** | **Action**              | **Calling Object**              | **Side Effect / Console Output** | **Return Value(s)**                   | **Return Value's Usage**          |
 | :---:    | :---------              | :---------                      | :------------------------------- | :------------------                   | :-----------------------          |
-| 1        | `Array#map` method call | Array `[[1, 2], [3, 4]]`        | None                             | New array `[]`                        | None                              |
+| 1        | `Array#map` method call | Array `[[1, 2], [3, 4]]`        | None                             | New array `[[2, 4], [6, 8]]`                        | None                              |
 | 1-5      | Outer Block Execution   | Each sub-array: `[1,2]`/`[3,4]` | None                             | New sub-arrays: `[2, 4]` and `[6, 8]` | Used by `#map` for transformation |
 | 2        | `Array#map` method call | Sub-array at current iteration  | None                             | New sub-array at current iteration    | Determine block's return value    |
 
