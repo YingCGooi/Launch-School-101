@@ -13,9 +13,10 @@ end
 | 1-5      | Outer Block Execution    | Each sub-array: `[1,2]`/`[3,4]`                               | None                            | New sub-array at current iteration: `[2, 4]`/ `[6, 8]`                   | Used by outer `#map` for transformation |
 | 2        | `Array#map` method call  | Sub-array at current iteration of outer block                 | None                            | New sub-array at current iteration                                       | Determine outer block's return value    |
 | 2-4      | Inner Block Execution    | Each element of sub-array at current iteration of outer block | None                            | `2`, `4` at first outer iteration and `6`, `8` at second outer iteration | Used by inner `#map` for transformation |
-| 3        | Multiplication `num * 2` | Each integer in sub-array at current iteration of outer block | None                            | An integer twice the original value                                      | Used as inner block's return value      |
+| 3        | Multiplication `num * 2` | Each integer in sub-array at current iteration of outer block | None                            | An integer twice the original value                                      | Determine inner block's return value    |
 
-### Return Values
+
+### Return Values and Analysis
 When the original array `[[1, 2], [3, 4]]` is passed into the outer `#map` block, at each iteration each sub-array is passed into the inner `#map` block.
 Each element in the sub-array at the current outer block iteration is then passed into the inner block through the block argument `|num|`,
 and subsequently assinged to inner local variable `num`.
