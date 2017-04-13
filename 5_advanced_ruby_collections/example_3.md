@@ -8,7 +8,7 @@ end
 # => [1, 3]
 ```
 
-| Line| Action              | Object                 |Side Effect / Output| Return Value  | Return Value's Usage |
+| Line| Action              | Object                 |Side Effect / Console Output| Return Value  | Return Value's Usage |
 |:---:| :-----------------  | :----------            |:---       | :------------ | :------------ |
 |  1  | `Array#map` method call | `[[1, 2], [3, 4]]` | No | New array `[1, 3]`| No usage |
 |  2  | `first` method call | Each sub-array         | No     | First element (at index 0) of sub-array | Used by `puts` |
