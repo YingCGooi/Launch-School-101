@@ -4,16 +4,28 @@
     num * 2
   end
 end
+# => [[2, 4], [6, 8]]
 ```
 
 | **Line** | **Action**              | **Calling Object**                                            | **Side Effect /Console Output** | **Return Value(s)**                                                        | **Return Value's Usage**                |
 | :---:    | :---------              | :---------                                                    | :-----------------              | :------------------                                                        | :-----------------------                |
 | 1        | `Array#map` method call | Array `[[1, 2], [3, 4]]`                                      | None                            | New array `[[2, 4], [6, 8]]`                                               | None                                    |
-| 1-5      | Outer Block Execution   | Each sub-array: `[1,2]`/`[3,4]`                               | None                            | New sub-arrays: `[2, 4]` and `[6, 8]`                                      | Used by `#map` for transformation       |
+| 1-5      | Outer Block Execution   | Each sub-array: `[1,2]`/`[3,4]`                               | None                            | New sub-arrays: `[2, 4]` and `[6, 8]`                                      | Used by outer `#map` for transformation |
 | 2        | `Array#map` method call | Sub-array at current iteration of outer block                 | None                            | New sub-array at current iteration                                         | Determine block's return value          |
 | 2-4      | Inner Block Execution   | Each element of sub-array at current iteration of outer block | None                            | `2`, `4` at first outer iteration and `6`, `8` at second outer iteration   | Used by inner `#map` for transformation |
 | 3        | Multiplication          | Each integer in sub-array at current iteration of outer block | None                            | `num * 2`, where `num` is each integer at current iteration of inner block | Used as inner block's return value      |
 
+### Return Values
+When the original array `[[1, 2], [3, 4]]` is passed into the outer `#map` block, at each iteration each sub-array is passed into the inner `#map` block.
+Each element in the sub-array at the current outer block iteration is then passed into the inner block through the block argument `|num|`,
+and subsequently assinged to inner local variable `num`.
+At the last evaluated statement of the inner block, `num * 2` will return an integer value that is twice the integer value of the original element.
+This return value is the inner block's return value.
 
+At the end of block execution, a new array will be returned by the inner `#map` containing all of the transformed elements in the sub-array for that outer block's iteration.
+In this case, the inner `#map` will return `[2, 4]` in the first outer block iteration and `[6, 8]` in the second iteration.
+Since the inner block is the last evaluated statement of the outer block,
+the return values of the inner `#map`: `[2, 4]` and `[6, 8]` will be used as the outer block's return values.
+The outer `#map` will use those return values and perform a transformation, returning a new array `[[2, 4], [6, 8]]`.
 
 
