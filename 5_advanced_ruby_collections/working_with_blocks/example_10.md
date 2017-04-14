@@ -42,7 +42,7 @@ end
 
 #### LINE 9
 - This is the end of `if` statement, also the last evaluated statement within the inner block
-- The block return values of the inner block is then `[3, 4]`, `[4, 5]` and `6`, `7` in the first and second outer block iteration respectively
+- The block return values of the inner block are then `[3, 4]`, `[4, 5]` and `6`, `7` in the first and second outer block iteration respectively
 
 #### LINE 10
 - At the end of inner block execution, `map` includes each block return values into a new array
