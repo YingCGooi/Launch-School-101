@@ -17,7 +17,7 @@ end
 - Each inner array is passed to the outer block in turn and assigned to the local variable `arr`
 
 #### LINE 2
-- Each inner array `arr`: `[[1, 2], [3, 4]]`/ `[5, 6]` in turn calls the `Array#map` method
+- Each inner array `arr`: `[[1, 2], [3, 4]]`// `[5, 6]` in turn calls the `Array#map` method
 - Each innermost array or inner-element is passed to the inner block in turn and assigned to the local variable `el`
 
 #### LINE 3
@@ -38,7 +38,7 @@ end
 
 #### LINE 8
 - At the end of innermost block execution, `map` includes each block return value into a new array
-- The innermost `#map` returns `[3, 4]` and `[4, 5]` in turn.
+- The innermost `#map` returns `[3, 4]` and `[4, 5]` in each iteration respectively
 
 #### LINE 9
 - This is the end of `if` statement, also the last evaluated statement within the inner block
