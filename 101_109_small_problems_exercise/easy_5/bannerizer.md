@@ -77,9 +77,9 @@ The trick here is to extract 76 characters at a time from each `paragraph` to fo
 The question here is perhaps, how do we start with extracting the first 76 characters of each `paragraph`? And how can we continuously extract the next 76 characters at subsequent iterations?
 
 The easiest approach here is perhaps calling `String#[]` (element reference) on `paragraph`. At the first iteration, the first 76 characters of `paragraph` string is simply `paragraph[0, 76]`, it means that we return `76` characters starting from index `0` (first character) of paragraph. 
-An example table below shows how each line is being extracted, based on our example paragraph string that has total character number of 254.
+An example table below shows how each line is being extracted:
 
-An Example string with 254 characters:
+Our example string with 254 characters:
 > 
 >*'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate vestibulum nisi. Nam maximus hendrerit eros non mattis. Fusce a pretium elit. Nulla ullamcorper turpis orci, eu accumsan tellus euismod suscipit. Pellentesque convallis dolor dolor.'*
 
