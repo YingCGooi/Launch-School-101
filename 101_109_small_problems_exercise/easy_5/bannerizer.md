@@ -73,7 +73,7 @@ end
 ```
 The trick here is to extract 76 characters at a time from each `paragraph` to form a full line. We can achieve this by using the formula `paragraph[MAX_WIDTH * (i - 1), MAX_WIDTH]`. 
 
-## Formula Breakdown
+## Loop Breakdown
 The question here is perhaps, how do we start with extracting the first 76 characters of each `paragraph`? And how can we continuously extract the next 76 characters at subsequent iterations?
 
 The easiest approach here is perhaps calling `String#[]` (element reference) on `paragraph`. At the first iteration, the first 76 characters of `paragraph` string is simply `paragraph[0, 76]`, it means that we return `76` characters starting from index `0` (first character) of paragraph. 
@@ -92,4 +92,32 @@ Our example string with 254 characters:
 
 *Note: MAX_WIDTH = 76*
 
+Formatting the `current_line` is relatively simple, however, we need to consider when the `current_line` has less than 76 characters especially in the last iteration. 
+If we add the lines "|" on both ends without considering this, the "|" at the right end will be misaligned. 
 
+To fix this, we call `String#ljust` on `current_line`, passing in the `content_width` as the argument. That way, the last line will expand and match our designated maximum box width, while keeping its alignment to the left.
+
+Lastly, we add the lines "|" to both ends of `current_line` while adding a newline character `\n` at the end. Each `current_line` is then concatenated to the string variable `formatted_text`
+
+`formatted_text` will be our output paragraph string. This will also be the block return value of `map`, which will be used by `map` to return a new array containing all of the formatted paragraph strings.
+
+## Putting It All Together
+Now our `wrapped_output` method returns an array of paragraphs and within it contains `\n`s and `|`s at designated line breaks. We will now write the remaining code to our main method:
+
+```ruby
+def print_in_box(input_string)
+
+  content_width = [input_string.size, MAX_WIDTH].min
+  horizontal_rule = "+-#{'-' * content_width}-+"
+  top_bottom_padding = "| #{' ' * content_width} |"
+
+  puts horizontal_rule
+  puts top_bottom_padding
+  puts wrapped_output(input_string, content_width)
+  puts top_bottom_padding
+  puts horizontal_rule
+end
+```
+
+We can now draw the box and call `puts` to print out our formatted text into the console.
+Since we have already took care of the formatting and wrapping isseus, `puts` will correctly print out all the elements in our transformed `paragraphs` array.
