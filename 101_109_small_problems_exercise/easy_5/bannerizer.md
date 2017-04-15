@@ -26,8 +26,8 @@ def wrapped_output(input_string, content_width)
 end
 ```
 We create an array `paragraphs` within this method. `paragraphs` will contain each paragraph as elements. We can do this by calling `String#split` on the input text with `\n` as the delimiter.
+To simply demonstrate this:
 
-##### To simply demonstrate this:
 ```ruby
 input_string = 'Sample first paragraph.
 
@@ -53,7 +53,6 @@ end
 ```
 Each paragraph or empty string is passed into the `map` block and in turn assigned to the local variable `paragraph`. One way to transform each `paragraph` into individual lines of strings is to add `\n`s into the `paragraph` string whenever we need a line break. We can put the formatted paragraph into a new variable `formatted_text` before returning it as a block return value.
 
-## Determining Number of Lines
 To determine how many lines we have in each `paragraph`, we use the formula `(paragraph.size / MAX_WIDTH) + 1`. This formula determines how many 76-character lines can occur in a single paragraph. It then adds `1` to account for the last line which, in many cases is less than 76 characters. *For example, a 254-character paragraph will have 3 full lines and 1 additional line with spaces at the end.*
 
 ## Splitting Paragraphs into Multiple Formatted Lines
@@ -79,7 +78,8 @@ The question here is perhaps, how do we start with extracting the first 76 chara
 
 The easiest approach here is perhaps calling `String#[]` (element reference) on `paragraph`. At the first iteration, the first 76 characters of `paragraph` string is simply `paragraph[0, 76]`, it means that we return `76` characters starting from index `0` (first character) of paragraph. 
 An example table below shows how each line is being extracted, based on our example paragraph string that has total character number of 254.
->*Example string with 254 characters:*
+
+An Example string with 254 characters:
 > 
 >*'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate vestibulum nisi. Nam maximus hendrerit eros non mattis. Fusce a pretium elit. Nulla ullamcorper turpis orci, eu accumsan tellus euismod suscipit. Pellentesque convallis dolor dolor.'*
 
