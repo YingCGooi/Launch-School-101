@@ -53,10 +53,10 @@ end
 ```
 Each paragraph or empty string is passed into the `map` block and in turn assigned to the local variable `paragraph`. One way to transform each `paragraph` into individual lines of strings is to add `\n`s into the `paragraph` string whenever we need a line break. We can put the formatted paragraph into a new variable `formatted_text` before returning it as a block return value.
 
-##### Determining Number of Lines
+## Determining Number of Lines
 To determine how many lines we have in each `paragraph`, we use the formula `(paragraph.size / MAX_WIDTH) + 1`. This formula determines how many 76-character lines can occur in a single paragraph. It then adds `1` to account for the last line which, in many cases is less than 76 characters. *For example, a 254-character paragraph will have 3 full lines and 1 additional line with spaces at the end.*
 
-##### Splitting Paragraphs into Multiple Formatted Lines
+## Splitting Paragraphs into Multiple Formatted Lines
 This is perhaps the trickiest part of the problem. Essentially we want to perform a line-wrap and adding '|' on each end of each line. In our `Array#map` block we will add a loop specifying `i` as the counter.
 
 ```ruby
@@ -74,7 +74,7 @@ end
 ```
 The trick here is to extract 76 characters at a time from each `paragraph` to form a full line. We can achieve this by using the formula `paragraph[MAX_WIDTH * (i - 1), MAX_WIDTH]`. 
 
-##### Formula Breakdown
+## Formula Breakdown
 The question here is perhaps, how do we start with extracting the first 76 characters of each `paragraph`? And how can we continuously extract the next 76 characters at subsequent iterations?
 
 The easiest approach here is perhaps calling `String#[]` (element reference) on `paragraph`. At the first iteration, the first 76 characters of `paragraph` string is simply `paragraph[0, 76]`, it means that we return `76` characters starting from index `0` (first character) of paragraph. 
@@ -88,6 +88,7 @@ An example table below shows how each line is being extracted, based on our exam
 | 2                | 76  - 151                  | `paragraph[76, 76]`                                 | 76                  | 'tibulum nisi. Nam maximus hendrerit eros non mattis. Fusce a pretium elit. N' |
 | 3                | 152 - 227                  | `paragraph[152, 76]`                                | 76                  | 'ulla ullamcorper turpis orci, eu accumsan tellus euismod suscipit. Pellentes' |
 | 4                | 228 - 253                  | `paragraph[228, 76]`                                | 26                  | 'que convallis dolor dolor.'                                                   |
+
 *Note: MAX_WIDTH = 76*
 
 
