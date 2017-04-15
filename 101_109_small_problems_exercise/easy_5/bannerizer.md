@@ -25,12 +25,14 @@ def wrapped_output(input_string, content_width)
   paragraphs = input_string.split("\n")
 end
 ```
-Next, we create an array `paragraphs` that contains each paragraph as elements. We can do this by calling `String#split` on the input text with `\n` as the delimiter.
+We create an array `paragraphs` within this method. `paragraphs` will contain each paragraph as elements. We can do this by calling `String#split` on the input text with `\n` as the delimiter.
 
-
+##### To demonstrate this:
 ```ruby
 'Sample first paragraph.
 
-Sample second paragraph...'.split("\n")
-# => ["Sample first paragraph.", "", "Sample second paragraph..."]
+Sample last paragraph...'.split("\n")
+# => ["Sample first paragraph.", "", "Sample last paragraph..."]
 ```
+By calling `String#split` on a string with two paragraphs, we have 3 elements returned here: the first paragraph, an empty string and the last paragraph.
+
