@@ -1,7 +1,7 @@
 ### Further Exploration
 The working solution here wraps the text string and fit it appropriately into an 80-column terminal window. To correctly render an input text that contain multiple paragraphs, we also consider this edge case where it contains one or more newline `\n` characters.
 
-## Breaking Down Into Parts:
+### Breaking Down Into Parts
 
 ```ruby
 MAX_WIDTH = 76
