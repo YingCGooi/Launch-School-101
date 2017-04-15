@@ -38,7 +38,3 @@ Donec auctor commodo ligula, id luctus ligula egestas at. Donec euismod ut tellu
 print_in_box('To boldly go where no one has gone before.')
 
 print_in_box('')
-
-p 'Sample first paragraph.
-
-Sample second paragraph...'.split("\n")
