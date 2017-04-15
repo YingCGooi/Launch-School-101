@@ -8,7 +8,7 @@ MAX_WIDTH = 76
 ```
 First, we specify the constant variable `MAX_WIDTH`. This will be the maximum character width of the text string at any given line. We set this to be 76 (total box width of 80 minus 2 characters of padding on each side)
 
-We then create our main method `print_in_box` that takes in a text input as an argument. The text input can be a simple line of string or multiple paragraphs. We then initialize a method local variable `content_width` to determine the width of our box.
+We then create our main method `print_in_box` that takes in a text input as an argument. The text input can be a simple line of string or multiple paragraphs. We then initialize a method local variable `content_width` to determine the width of our box:
 
 ```ruby
 def print_in_box(input_string)
@@ -18,21 +18,23 @@ end
 The `content_width` resizes based on the character size of the input string, up to a width of 76 characters. 
 
 ## Wrapping the Input Text
-Before moving on to draw the box and output the string, we need to split the input text into multiple paragraphs, and subsequently into individual lines before formatting them into a wrapped-string output.
+Before moving on to draw the box and output the string, we need to split the input text into multiple paragraphs, and subsequently into individual lines before formatting them into a wrapped-string output. We create a sub-method `wrapped_output` here:
 
 ```ruby
 def wrapped_output(input_string, content_width)
 
 end
  ```
-We create a sub-method `wrapped_output` here. `wrapped_output` aims to return a wrapped, formatted text string before we call `puts` in our main method `print_in_box`.
+`wrapped_output` aims to return a wrapped, formatted text string before we call `puts` in our main method `print_in_box`.
+
 
 ```ruby
 def wrapped_output(input_string, content_width)
   paragraphs = input_string.split("\n")
 end
 ```
-Next, we create an array that contains each paragraph as string elements. We can do this by calling `String#split` on the input text with the delimiter `\n`.
+Next, we create an array that contains each paragraph as string elements. We can do this by calling `String#split` on the input text with `\n` as the delimiter.
+
 
 ```ruby
 'Sample first paragraph.
