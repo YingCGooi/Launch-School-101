@@ -79,10 +79,11 @@ The question here is perhaps, how do we start with extracting the first 76 chara
 
 The easiest approach here is perhaps calling `String#[]` (element reference) on `paragraph`. At the first iteration, the first 76 characters of `paragraph` string is simply `paragraph[0, 76]`, it means that we return `76` characters starting from index `0` (first character) of paragraph. 
 An example table below shows how each line is being extracted, based on our example paragraph string that has total character number of 254.
->Example string with 254 characters
-'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate vestibulum nisi. Nam maximus hendrerit eros non mattis. Fusce a pretium elit. Nulla ullamcorper turpis orci, eu accumsan tellus euismod suscipit. Pellentesque convallis dolor dolor.'
+>*Example string with 254 characters:*
+> 
+>*'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate vestibulum nisi. Nam maximus hendrerit eros non mattis. Fusce a pretium elit. Nulla ullamcorper turpis orci, eu accumsan tellus euismod suscipit. Pellentesque convallis dolor dolor.'*
 
-| Line Number(`i`) | Index Number (Start - End) | Formula `paragraph[MAX_WIDTH * (i - 1), MAX_WIDTH]` | `current_line`.size | `current_line`                                                                 |
+| Line Number(`i`) | Index Number (Start - End) | Formula `paragraph[MAX_WIDTH * (i - 1), MAX_WIDTH]` | `current_line`.size |  `p current_line`                                                                 |
 | :---             | ---:                       | :---                                                | ---                 | ---                                                                            |
 | 1                | 0  - 75                    | `paragraph[0, 76]`                                  | 76                  | 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate ves' |
 | 2                | 76  - 151                  | `paragraph[76, 76]`                                 | 76                  | 'tibulum nisi. Nam maximus hendrerit eros non mattis. Fusce a pretium elit. N' |
