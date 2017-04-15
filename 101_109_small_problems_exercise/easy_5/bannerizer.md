@@ -83,12 +83,12 @@ Our example string with 254 characters:
 > 
 >*'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate vestibulum nisi. Nam maximus hendrerit eros non mattis. Fusce a pretium elit. Nulla ullamcorper turpis orci, eu accumsan tellus euismod suscipit. Pellentesque convallis dolor dolor.'*
 
-| Line Number(`i`) | Index Number (Start - End) | Formula to return `current_line`: `paragraph[MAX_WIDTH * (i - 1), MAX_WIDTH]` | `current_line`.size |  `p current_line`                                                                 |
-| :---             | ---:                       | :---                                                | ---                 | ---                                                                            |
-| 1                | 0  - 75                    | `paragraph[0, 76]`                                  | 76                  | 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate ves' |
-| 2                | 76  - 151                  | `paragraph[76, 76]`                                 | 76                  | 'tibulum nisi. Nam maximus hendrerit eros non mattis. Fusce a pretium elit. N' |
-| 3                | 152 - 227                  | `paragraph[152, 76]`                                | 76                  | 'ulla ullamcorper turpis orci, eu accumsan tellus euismod suscipit. Pellentes' |
-| 4                | 228 - 253                  | `paragraph[228, 76]`                                | 26                  | 'que convallis dolor dolor.'                                                   |
+| Line Number(`i`) | Index Number (Start - End) | Formula to return `current_line`: `paragraph[MAX_WIDTH * (i - 1), MAX_WIDTH]` | `current_line`.size | `p current_line`                                                               |
+| :---             | :---                       | :---                                                                          | :---:               | ---                                                                            |
+| 1                | 0  - 75                    | `paragraph[0, 76]`                                                            | 76                  | 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate ves' |
+| 2                | 76  - 151                  | `paragraph[76, 76]`                                                           | 76                  | 'tibulum nisi. Nam maximus hendrerit eros non mattis. Fusce a pretium elit. N' |
+| 3                | 152 - 227                  | `paragraph[152, 76]`                                                          | 76                  | 'ulla ullamcorper turpis orci, eu accumsan tellus euismod suscipit. Pellentes' |
+| 4                | 228 - 253                  | `paragraph[228, 76]`                                                          | 26                  | 'que convallis dolor dolor.'                                                   |
 
 *Note: MAX_WIDTH = 76*
 
