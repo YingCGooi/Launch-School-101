@@ -79,7 +79,7 @@ The question here is perhaps, how do we start with extracting the first 76 chara
 The easiest approach here is perhaps calling `String#[]` (element reference) on `paragraph`. At the first iteration, the first 76 characters of `paragraph` string is simply `paragraph[0, 76]`, it means that we return `76` characters starting from index `0` (first character) of paragraph. 
 An example table below shows how each line is being extracted:
 
-Our example string with 254 characters:
+We use an example string with 254 characters:
 > 
 >*'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate vestibulum nisi. Nam maximus hendrerit eros non mattis. Fusce a pretium elit. Nulla ullamcorper turpis orci, eu accumsan tellus euismod suscipit. Pellentesque convallis dolor dolor.'*
 
@@ -119,5 +119,5 @@ def print_in_box(input_string)
 end
 ```
 
-We can now draw the box and call `puts` to print out our formatted text into the console.
+We can now draw the box and call `puts`.
 Since we have already took care of the formatting and wrapping isseus, `puts` will correctly print out all the elements in our transformed `paragraphs` array.
