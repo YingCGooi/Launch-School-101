@@ -22,7 +22,7 @@ COMPUTER_MARKER = 'O'
 DEFEND_MARKERS = [PLAYER_MARKER, PLAYER_MARKER, INITIAL_MARKER]
 OFFEND_MARKERS = [COMPUTER_MARKER, COMPUTER_MARKER, INITIAL_MARKER]
 
-INITIAL_CURRENT_PLAYER = 'player'
+INITIAL_CURRENT_PLAYER = 'choose'
 # Valid options are: 'player', 'computer' or 'choose'
 
 def prompt(msg)
@@ -37,10 +37,9 @@ end
 def display_board(brd)
   clear_screen
   puts "You're a #{PLAYER_MARKER}. Computer is #{COMPUTER_MARKER}."
-  puts "*Square spaces match a standard numpad's keys"
   puts ""
   puts "     |     |     "
-  puts "  #{brd[7]}  |  #{brd[8]}  |  #{brd[9]}   "
+  puts "  #{brd[1]}  |  #{brd[2]}  |  #{brd[3]}   "
   puts "     |     |     "
   puts "-----+-----+-----"
   puts "     |     |     "
@@ -48,7 +47,7 @@ def display_board(brd)
   puts "     |     |     "
   puts "-----+-----+-----"
   puts "     |     |     "
-  puts "  #{brd[1]}  |  #{brd[2]}  |  #{brd[3]}   "
+  puts "  #{brd[7]}  |  #{brd[8]}  |  #{brd[9]}   "
   puts "     |     |     "
   puts ""
 end
@@ -145,14 +144,14 @@ end
 
 def place_piece!(brd, current_player)
   case current_player
-  when 'Player' then player_places_piece!(brd)
+  when 'Player'   then player_places_piece!(brd)
   when 'Computer' then computer_places_piece!(brd)
   end
 end
 
 def alternate_player(current_player)
   case current_player
-  when 'Player' then 'Computer'
+  when 'Player'   then 'Computer'
   when 'Computer' then 'Player'
   end
 end
