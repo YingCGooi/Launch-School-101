@@ -131,7 +131,7 @@ def computer_places_piece!(brd)
 
   critical_lines = [offend_line, defend_line]
   critical_line  = critical_lines.compact.first
-  # remove nils, offend_line placed first
+  # remove nils, prioritize offend_line
 
   if !critical_line.nil?
     critical_move!(critical_line, brd)
@@ -167,7 +167,7 @@ end
 
 def detect_winner(brd)
   WINNING_LINES.each do |line|
-    if brd.values_at(*line).uniq == [PLAYER_MARKER]
+    if    brd.values_at(*line).uniq == [PLAYER_MARKER]
       return 'Player'
     elsif brd.values_at(*line).uniq == [COMPUTER_MARKER]
       return 'Computer'
