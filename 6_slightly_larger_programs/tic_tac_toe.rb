@@ -130,7 +130,8 @@ def computer_places_piece!(brd)
   defend_line = find_defend_lines(brd).sample
 
   critical_lines = [offend_line, defend_line]
-  critical_line  = critical_lines.compact.first # remove nils, offend first
+  critical_line  = critical_lines.compact.first
+  # remove nils, offend_line placed first
 
   if !critical_line.nil?
     critical_move!(critical_line, brd)
