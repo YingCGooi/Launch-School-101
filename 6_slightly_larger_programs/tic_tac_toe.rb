@@ -119,12 +119,6 @@ def find_offend_lines(board)
   end
 end
 
-# def critical_move!(critical_line, board)
-#   critical_line.each do |num|
-#     board[num] = COMPUTER_MARKER if board[num] == INITIAL_MARKER
-#   end
-# end
-
 def empty_square(line, board)
   line.select { |num| board[num] == INITIAL_MARKER }.first unless line.nil?
 end
