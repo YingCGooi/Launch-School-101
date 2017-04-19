@@ -105,20 +105,13 @@ def valid_square_number?(brd, number)
   empty_squares(brd).include?(number.to_i) && number == number.to_i.to_s
 end
 
-def defend_square(board)
-  defend_lines = WINNING_LINES.select do |line|
-    current_markers = board.values_at(*line)
-    DEFEND_MARKERS.sort == current_markers.sort
-  end
-  empty_square_in(defend_lines.sample, board)
-end
-
-def offend_square(board)
-  offend_lines = WINNING_LINES.select do |line|
-    current_markers = board.values_at(*line)
-    OFFEND_MARKERS.sort == current_markers.sort
-  end
-  empty_square_in(offend_lines.sample, board)
+def danger_square(board, danger_markers)
+  danger_lines =
+    WINNING_LINES.select do |line|
+      current_markers = board.values_at(*line)
+      danger_markers.sort == current_markers.sort
+    end
+  empty_square_in(danger_lines.sample, board)
 end
 
 def empty_square_in(line, board)
@@ -134,9 +127,9 @@ def center_square(board)
 end
 
 def computer_places_piece!(brd)
-  chosen_square = offend_square(brd) ||
-                  defend_square(brd) ||
-                  center_square(brd) ||
+  chosen_square = danger_square(brd, OFFEND_MARKERS) ||
+                  danger_square(brd, DEFEND_MARKERS) ||
+                  center_square(brd)                 ||
                   random_square(brd)
 
   brd[chosen_square] = COMPUTER_MARKER
