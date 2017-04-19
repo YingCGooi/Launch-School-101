@@ -51,8 +51,8 @@ def display_board(brd)
   puts "     |     |     "
   puts ""
 end
-
 # rubocop: enable Metrics/MethodLength, Metrics/AbcSize
+
 def initalize_board
   new_board = {}
   (1..9).each { |num| new_board[num] = INITIAL_MARKER }
@@ -69,9 +69,9 @@ def determine_player
   end
 
   if choice[0] == 'p' || INITIAL_CURRENT_PLAYER == 'player'
-    return 'Player'
+    'Player'
   else
-    return 'Computer'
+    'Computer'
   end
 end
 
@@ -119,28 +119,34 @@ def find_offend_lines(board)
   end
 end
 
-def critical_move!(critical_line, board)
-  critical_line.each do |num|
-    board[num] = COMPUTER_MARKER if board[num] == INITIAL_MARKER
-  end
+# def critical_move!(critical_line, board)
+#   critical_line.each do |num|
+#     board[num] = COMPUTER_MARKER if board[num] == INITIAL_MARKER
+#   end
+# end
+
+def empty_square(line, board)
+  line.select { |num| board[num] == INITIAL_MARKER }.first unless line.nil?
+end
+
+def random_square(board)
+  empty_squares(board).sample
+end
+
+def center_square(board)
+  5 if empty_squares(board).include?(5)
 end
 
 def computer_places_piece!(brd)
   offend_line = find_offend_lines(brd).sample
   defend_line = find_defend_lines(brd).sample
 
-  critical_lines = [offend_line, defend_line]
-  critical_line  = critical_lines.compact.first
-  # remove nils, prioritize offend_line
+  chosen_square = empty_square(offend_line, brd) ||
+                  empty_square(defend_line, brd) ||
+                  center_square(brd)             ||
+                  random_square(brd)
 
-  if !critical_line.nil?
-    critical_move!(critical_line, brd)
-  elsif empty_squares(brd).include?(5)
-    brd[5] = COMPUTER_MARKER
-  else
-    random_square = empty_squares(brd).sample
-    brd[random_square] = COMPUTER_MARKER
-  end
+  brd[chosen_square] = COMPUTER_MARKER
 end
 
 def place_piece!(brd, current_player)
@@ -186,7 +192,8 @@ computer_score = 0
 clear_screen
 prompt "Welcome to Tic-tac-toe!"
 if INITIAL_CURRENT_PLAYER != "choose"
-  prompt "You have chosen #{INITIAL_CURRENT_PLAYER} to go first. Hit 'Enter' to continue."
+  prompt "You have chosen #{INITIAL_CURRENT_PLAYER} to go first."
+  prompt "Hit 'Enter' to continue."
   gets.chomp
 end
 
