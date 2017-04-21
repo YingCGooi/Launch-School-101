@@ -27,10 +27,6 @@ def deal_cards!(deck, player_hand, dealer_hand)
   dealer_hand << deck.pop
 end
 
-def hit(hand, deck)
-  hand << deck.pop
-end
-
 def display_hands(player, dealer, player_total, dealer_total, all = false)
   if all
     prompt "Dealer has: #{cards_joinor(dealer)}"
@@ -144,7 +140,7 @@ loop do
     answer = gets.chomp
 
     clear_screen
-    hit(player_hand, deck) if answer.empty?
+    player_hand << deck.pop if answer.empty?
     player_total = total_value(player_hand)
     display_hands(player_hand, dealer_hand, player_total, dealer_total)
 
@@ -158,7 +154,7 @@ loop do
     loop do
       break if total_value(dealer_hand) >= HIT_LIMIT
       prompt "Dealer hits!"
-      hit(dealer_hand, deck)
+      dealer_hand << deck.pop
       dealer_total = total_value(dealer_hand)
     end
     prompt "Dealer ends his turn."
