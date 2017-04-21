@@ -4,11 +4,12 @@
 #   - repeat until bust or "stay"
 # 4. If player bust, dealer wins.
 # 5. Dealer turn: hit or stay
-#   - repeat until total >= 17
+#   - repeat until total >= HIT_LIMIT
 # 6. If dealer bust, player wins.
 # 7. Compare cards and declare winner.
-require 'pry'
 
+MAX_VALUE = 21
+HIT_LIMIT = 17
 CARDS_SUIT = ["Spade", "Heart", "Club", "Diamond"]
 CARDS_VALUE = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 def prompt(msg)
@@ -75,14 +76,14 @@ def total_value(hand)
 
   # compensate for Aces
   values.count('A').times do
-    sum -= 10 if sum > 21
+    sum -= 10 if sum > MAX_VALUE
   end
 
   sum
 end
 
 def bust?(total)
-  total > 21
+  total > MAX_VALUE
 end
 
 def determine_winner(player_total, dealer_total)
@@ -117,7 +118,7 @@ def clear_screen
 end
 
 clear_screen
-prompt "Welcome to Twenty-One!"
+prompt "Welcome to #{MAX_VALUE}!"
 prompt "Dealing cards... Hit 'Enter' or any key to continue"
 gets.chomp
 
@@ -155,7 +156,7 @@ loop do
   # dealer's turn only if player does not bust
   unless bust?(player_total)
     loop do
-      break if total_value(dealer_hand) >= 17
+      break if total_value(dealer_hand) >= HIT_LIMIT
       prompt "Dealer hits!"
       hit(dealer_hand, deck)
       dealer_total = total_value(dealer_hand)
@@ -188,4 +189,4 @@ loop do
   break if answer.downcase == 'x'
 end
 
-prompt "Thank you for playing Twenty-One! Good bye!"
+prompt "Thank you for playing #{MAX_VALUE}! Good bye!"
