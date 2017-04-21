@@ -16,53 +16,46 @@ def prompt(msg)
 end
 
 def initialize_deck
-  deck = CARDS_SUIT.product(CARDS_VALUE)
-end
-
-def hit_card!(deck)
-  random_card = deck.sample
-  deck.delete(random_card)
-  random_card
+  CARDS_SUIT.product(CARDS_VALUE).shuffle
 end
 
 def deal_cards!(deck, player_hand, dealer_hand)
-  player_hand << hit_card!(deck)
-  dealer_hand << hit_card!(deck)
-  player_hand << hit_card!(deck)
-  dealer_hand << hit_card!(deck)
+  player_hand << deck.pop
+  dealer_hand << deck.pop
+  player_hand << deck.pop
+  dealer_hand << deck.pop
 end
 
 def hit(hand, deck)
-  hand << hit_card!(deck)
+  hand << deck.pop
 end
 
-def display_hands(player_hand, dealer_hand, all = false)
+def display_hands(player, dealer, player_total, dealer_total, all = false)
   if all
-    prompt "Dealer has: #{cards_joinor(dealer_hand)}"
+    prompt "Dealer has: #{cards_joinor(dealer)}"
   else
-    prompt "Dealer has: #{dealer_hand[0][1].to_s} and [?]"
+    prompt "Dealer has: #{dealer[0][1]} and [?]"
   end
 
-  prompt "You have: #{cards_joinor(player_hand)}"
+  prompt "You have: #{cards_joinor(player)}"
   puts "=================================="
-  display_totals(player_hand, dealer_hand, all)
+  display_totals(player_total, dealer_total, all)
   puts "=================================="
 end
 
-def display_totals(player_hand, dealer_hand, all = false)
+def display_totals(player_total, dealer_total, all = false)
   if all
-    print "=> Dealer has a total of #{total_value(dealer_hand)} on hand."
-    print " - BUSTED!" if bust?(dealer_hand)
+    print "=> Dealer has a total of #{dealer_total} on hand."
+    print " - BUSTED!" if bust?(dealer_total)
     puts ""
   end
 
-  print "=> You have a total of #{total_value(player_hand)} on hand."
-  print " - BUSTED!"   if bust?(player_hand)
+  print "=> You have a total of #{player_total} on hand."
+  print " - BUSTED!"   if bust?(player_total)
   puts ""
 end
 
 def cards_joinor(hand)
-  words = ''
   values = hand.map { |card| card[1] }
   case values.size
   when 2     then values.join(' and ')
@@ -74,11 +67,10 @@ def total_value(hand)
   sum = 0
   values = hand.map { |card| card[1] }
   values.each do |value|
-    case
-    when value == 'A'    then sum += 11
-    when value.to_i == 0 then sum += 10
-    else sum += value.to_i
-    end
+    sum += if    value == 'A'    then 11
+           elsif value.to_i == 0 then 10
+           else  value.to_i
+           end
   end
 
   # compensate for Aces
@@ -89,30 +81,35 @@ def total_value(hand)
   sum
 end
 
-def bust?(hand)
-  total_value(hand) > 21
+def bust?(total)
+  total > 21
 end
 
-def determine_winner(player_hand, dealer_hand)
-  if bust?(dealer_hand)
+def determine_winner(player_total, dealer_total)
+  if bust?(dealer_total)
     :player
-  elsif bust?(player_hand)
+  elsif bust?(player_total)
     :dealer
-  elsif total_value(player_hand) > total_value(dealer_hand)
+  elsif player_total > dealer_total
     :player
-  elsif total_value(player_hand) < total_value(dealer_hand)
+  elsif player_total < dealer_total
     :dealer
   else
     :tie
   end
 end
 
-def display_winner(player_hand, dealer_hand)
+def display_winner(player_hand, dealer_hand, player_score, dealer_score)
   case determine_winner(player_hand, dealer_hand)
   when :player then prompt "YOU WON!"
   when :dealer then prompt "YOU LOST!"
   when :tie    then prompt "It's a tie!"
   end
+  prompt "Your score: #{player_score} | Dealer's score: #{dealer_score}"
+end
+
+def game_end?(player_score, dealer_score)
+  player_score >= 5 || dealer_score >= 5
 end
 
 def clear_screen
@@ -124,6 +121,9 @@ prompt "Welcome to Twenty-One!"
 prompt "Dealing cards... Hit 'Enter' or any key to continue"
 gets.chomp
 
+player_score = 0
+dealer_score = 0
+
 loop do
   clear_screen
   deck = initialize_deck
@@ -131,7 +131,11 @@ loop do
   player_hand = []
   dealer_hand = []
   deal_cards!(deck, player_hand, dealer_hand)
-  display_hands(player_hand, dealer_hand)
+
+  player_total = total_value(player_hand)
+  dealer_total = total_value(dealer_hand)
+
+  display_hands(player_hand, dealer_hand, player_total, dealer_total)
 
   answer = ''
   loop do
@@ -140,19 +144,21 @@ loop do
 
     clear_screen
     hit(player_hand, deck) if answer.empty?
-    display_hands(player_hand, dealer_hand)
+    player_total = total_value(player_hand)
+    display_hands(player_hand, dealer_hand, player_total, dealer_total)
 
-    break if answer.downcase == 's' || bust?(player_hand)
+    break if answer.downcase == 's' || bust?(player_total)
     next if answer.empty?
     prompt "Invalid input."
   end
 
   # dealer's turn only if player does not bust
-  unless bust?(player_hand)
+  unless bust?(player_total)
     loop do
       break if total_value(dealer_hand) >= 17
-      prompt "Dealer draws a card..."
+      prompt "Dealer hits!"
       hit(dealer_hand, deck)
+      dealer_total = total_value(dealer_hand)
     end
     prompt "Dealer ends his turn."
     prompt "Hit 'Enter' or any key to continue..."
@@ -160,8 +166,17 @@ loop do
   end
 
   clear_screen
-  display_hands(player_hand, dealer_hand, all = true)
-  display_winner(player_hand, dealer_hand)
+  player_score += 1 if determine_winner(player_total, dealer_total) == :player
+  dealer_score += 1 if determine_winner(player_total, dealer_total) == :dealer
+  display_hands(player_hand, dealer_hand, player_total, dealer_total, true)
+  display_winner(player_total, dealer_total, player_score, dealer_score)
+
+  if game_end?(player_score, dealer_score)
+    prompt "YOU WON THE GAME!"     if player_score >= 5
+    prompt "DEALER WINS THE GAME!" if dealer_score >= 5
+    player_score = 0
+    dealer_score = 0
+  end
 
   loop do
     prompt "Play again? 'Enter' to continue, 'x' to exit"
