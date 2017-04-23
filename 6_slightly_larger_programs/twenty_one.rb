@@ -10,21 +10,22 @@
 
 MAX_VALUE = 21
 HIT_LIMIT = 17
-CARDS_SUIT = ["Spade", "Heart", "Club", "Diamond"]
-CARDS_VALUE = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+CARDS_SUITS = ["Spade", "Heart", "Club", "Diamond"]
+CARDS_VALUES = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+
 def prompt(msg)
   puts "=> #{msg}"
 end
 
 def initialize_deck
-  CARDS_SUIT.product(CARDS_VALUE).shuffle
+  CARDS_SUITS.product(CARDS_VALUES).shuffle
 end
 
 def deal_cards!(deck, player_hand, dealer_hand)
-  player_hand << deck.pop
-  dealer_hand << deck.pop
-  player_hand << deck.pop
-  dealer_hand << deck.pop
+  2.times do
+   player_hand << deck.pop
+   dealer_hand << deck.pop
+  end
 end
 
 def display_hands(player, dealer, player_total, dealer_total, all = false)
@@ -40,7 +41,7 @@ def display_hands(player, dealer, player_total, dealer_total, all = false)
   puts "=================================="
 end
 
-def display_totals(player_total, dealer_total, all = false)
+def display_totals(player_total, dealer_total, all)
   if all
     print "=> Dealer has a total of #{dealer_total} on hand."
     print " - BUSTED!" if bust?(dealer_total)
@@ -89,7 +90,7 @@ def determine_winner(player_total, dealer_total)
     :dealer
   elsif player_total > dealer_total
     :player
-  elsif player_total < dealer_total
+  elsif dealer_total > player_total
     :dealer
   else
     :tie

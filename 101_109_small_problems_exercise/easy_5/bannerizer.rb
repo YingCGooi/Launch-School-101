@@ -1,5 +1,5 @@
 # Write a method that will take a short line of text, and print it within a box.
-MAX_WIDTH = 100
+MAX_WIDTH = 50
 def wrapped_output(input_string, content_width)
   paragraphs = input_string.split("\n")
 
