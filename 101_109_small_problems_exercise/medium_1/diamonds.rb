@@ -28,7 +28,7 @@
 # end
 
 def print_row(grid_size, distance_from_center)
-  number_of_stars = grid_size - 2 * distance_from_center
+  number_of_stars = grid_size - 1 * distance_from_center
   stars = '*' * number_of_stars
   puts stars.center(grid_size)
 end
